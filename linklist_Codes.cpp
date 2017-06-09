@@ -3,7 +3,7 @@
 struct linklist
 {
 	struct linklist *p;
-	int a;
+	int data;
 };
 struct linklist *header;
 void create(int);
@@ -41,12 +41,12 @@ void sort()
 		next=curr->p;
 		while(next!=NULL)
 		{  
-		   if(curr->a > next->a)
+		   if(curr->data > next->data)
 		   {
 		   
-			temp=curr->a;
-			curr->a=next->a;
-			next->a=temp;
+			temp=curr->data;
+			curr->data=next->data;
+			next->data=temp;
 		}   
 		next=next->p;
 		}
@@ -87,7 +87,7 @@ void create(int t)
 {
 	struct linklist *temp,*traverse;
 	temp=(struct linklist*)malloc(sizeof(struct linklist));
-	temp->a=t;
+	temp->data=t;
 	temp->p=NULL;
 	if(header==NULL)
 	{
@@ -111,7 +111,7 @@ void show()
 	struct linklist *print=header;
 	while(print!=NULL)
 	{
-		printf("[%d]  ",print->a);
+		printf("[%d]  ",print->data);
 		print=print->p;
 	}
 } 
@@ -143,9 +143,9 @@ void insert_sort(int t)
 {
 	struct linklist *curr=header,*temp,*prev,*next;
 	temp=(struct linklist*)malloc(sizeof(struct linklist));
-	temp->a=t;
+	temp->data=t;
 	temp->p=NULL;
-	while(curr->a < temp->a )
+	while(curr->data < temp->data )
 	{   next=curr;
 		curr=curr->p;
 	}
